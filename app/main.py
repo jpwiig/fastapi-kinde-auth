@@ -35,6 +35,6 @@ async def  register(req: Request):
 
 @app.get("/api/user")
 async def user(request: Request): 
-    if not oauth.is_authenticated(request): 
-        return RedirectResponse(await oauth.login)
+    if not oauth.is_authenticated(): 
+        return RedirectResponse(await oauth.login())
     return oauth.get_user_info(request)
